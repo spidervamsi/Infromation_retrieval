@@ -81,14 +81,14 @@ def topic(tweet, processed):
         return max(counter.items(), key=lambda x: x[1])[0]
 
 
-processed = ground_truth()
+if __name__ == "__main__":
+    processed = ground_truth()
 
-import pickle
+# import pickle
 
-fp = open("hindi_to_eng.pkl", "rb")  # Input your dataset
-x_data = pickle.load(fp)
+# fp = open("hindi_to_eng.pkl", "rb")  # Input your dataset
+# x_data = pickle.load(fp)
 
-ans = []
-for i in x_data:
-    ans.append(topic(i, processed))
-print (ans)
+# ans = []
+# for i in x_data:
+#     ans.append(topic(i, processed))
