@@ -39,7 +39,7 @@ def get_processed_record(entry):
 if __name__ == "__main__":
     write_collection = db.processed
     # cursor = collection.find({"custom_id": {"$gt": 9370}})
-    cursor = collection.find({"custom_id": {"$gt": 11270, "$lt": 20001}})
+    cursor = collection.find({"custom_id": {"$gt": 30000, "$lt": 40001}})
 
     for document in cursor:
         result = get_processed_record(document)
