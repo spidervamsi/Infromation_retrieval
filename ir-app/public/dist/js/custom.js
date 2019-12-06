@@ -1,4 +1,27 @@
-var pois = ["KamalaHarris","AOC","narendramodi","jairbolsonaro","AmitShah","ewarren","Haddad_Fernando","rajnathsingh","CarlosBolsonaro","ArvindKejriwal","jose_simao","Swamy39","gleisi","Nidhi","ManuelaDavila","BernieSanders","jeanwyllys_real","JoeBiden","JohnJHarwood","cirogomes","MarinaSilva","dilmabr","PeteButtigieg","yadavakhilesh","HillaryClinton","myogiadityanath","BolsonaroSP","LulaOficial","SenSanders","RahulGandhi","nsitharaman","FlavioBolsonaro","BarackObama"]
+var pois = [
+  "narendramodi",
+  "rajnathsingh",
+  "Nidhi",
+  "ArvindKejriwal",
+  "Swamy39",
+  "KamalaHarris",
+  "JohnJHarwood",
+  "BernieSanders",
+  "JoeBiden",
+  "ewarren",
+  "jose_simao",
+  "ManuelaDavila",
+  "Haddad_Fernando",
+  "gleisi",
+  "jeanwyllys_real",
+  "AmitShah",
+  "yadavakhilesh",
+  "AOC",
+  "HillaryClinton",
+  "jairbolsonaro",
+  "dilmabr",
+  "MarinaSilva"
+]
 
 // Initialize page content
 generateFacetFilters();
