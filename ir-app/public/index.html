@@ -93,36 +93,7 @@
               </p>
             </a>
 
-            <ul class="nav nav-treeview" id="poi-facets">
-
-              <li class="nav-item">
-                <div class="form-check nav-link" style="padding-left:50px">
-                    <input class="form-check-input" type="checkbox" id="gridCheck1">
-                    <label class="form-check-label" for="gridCheck1">
-                      KamalaHarris
-                    </label>
-                </div>
-              </li>
-
-              <li class="nav-item">
-                <div class="form-check nav-link" style="padding-left:50px">
-                      <input class="form-check-input" type="checkbox" id="gridCheck1">
-                      <label class="form-check-label" for="gridCheck1">
-                        Barack Obama
-                      </label>
-                </div>
-              </li>
-
-              <li class="nav-item">
-                <div class="form-check nav-link" style="padding-left:50px">
-                      <input class="form-check-input" type="checkbox" id="gridCheck1">
-                      <label class="form-check-label" for="gridCheck1">
-                        Barack Obama
-                      </label>
-                </div>
-              </li>
-
-            </ul>
+            <ul class="nav nav-treeview" id="poi-facets"></ul>
           </li>
 
           <li class="nav-item has-treeview">
@@ -136,8 +107,9 @@
               
                 <li class="nav-item">
                     <div class="form-check nav-link" style="padding-left:50px">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
-                          <label class="form-check-label" for="gridCheck1">
+                          <input id="country-facets-chk-0" data-id="country" data-value="USA" onchange="checkBoxChange(this)"
+                          class="form-check-input" type="checkbox">
+                          <label class="form-check-label" for="country-facets-chk-0">
                             USA
                           </label>
                     </div>
@@ -145,8 +117,9 @@
 
                 <li class="nav-item">
                     <div class="form-check nav-link" style="padding-left:50px">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
-                          <label class="form-check-label" for="gridCheck1">
+                          <input id="country-facets-chk-1" data-id="country" data-value="India" onchange="checkBoxChange(this)"
+                          class="form-check-input" type="checkbox">
+                          <label class="form-check-label" for="country-facets-chk-1">
                             India
                           </label>
                     </div>
@@ -154,8 +127,9 @@
 
                 <li class="nav-item">
                     <div class="form-check nav-link" style="padding-left:50px">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
-                          <label class="form-check-label" for="gridCheck1">
+                          <input id="country-facets-chk-2" data-id="country" data-value="Brazil" onchange="checkBoxChange(this)"
+                          class="form-check-input" type="checkbox">
+                          <label class="form-check-label" for="country-facets-chk-2">
                             Brazil
                           </label>
                     </div>
@@ -175,8 +149,9 @@
 
               <li class="nav-item">
                   <div class="form-check nav-link" style="padding-left:50px">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
+                        <input id="language-facets-chk-0" data-id="lang" data-value="en" onchange="checkBoxChange(this)"
+                        class="form-check-input" type="checkbox">
+                        <label class="form-check-label" for="language-facets-chk-0">
                           English
                         </label>
                   </div>
@@ -184,8 +159,9 @@
 
               <li class="nav-item">
                   <div class="form-check nav-link" style="padding-left:50px">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
+                        <input id="language-facets-chk-1" data-id="lang" data-value="hi" onchange="checkBoxChange(this)"
+                        class="form-check-input" type="checkbox">
+                        <label class="form-check-label" for="language-facets-chk-1">
                           Hindi
                         </label>
                   </div>
@@ -193,8 +169,9 @@
 
               <li class="nav-item">
                   <div class="form-check nav-link" style="padding-left:50px">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
+                        <input id="language-facets-chk-2" data-id="lang" data-value="pt" onchange="checkBoxChange(this)"
+                        class="form-check-input" type="checkbox">
+                        <label class="form-check-label" for="language-facets-chk-2">
                           Portuguese
                         </label>
                   </div>
@@ -214,8 +191,9 @@
 
               <li class="nav-item">
                   <div class="form-check nav-link" style="padding-left:50px">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
+                        <input id="sentiment-facets-chk-0" data-id="sentiment" data-value="Positive" onchange="checkBoxChange(this)"
+                        class="form-check-input" type="checkbox">
+                        <label class="form-check-label" for="sentiment-facets-chk-0">
                           Positive
                         </label>
                   </div>
@@ -223,8 +201,9 @@
 
               <li class="nav-item">
                   <div class="form-check nav-link" style="padding-left:50px">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
+                        <input id="sentiment-facets-chk-1" data-id="sentiment" data-value="Negative" onchange="checkBoxChange(this)"
+                        class="form-check-input" type="checkbox">
+                        <label class="form-check-label" for="sentiment-facets-chk-1">
                           Negative
                         </label>
                   </div>
@@ -232,8 +211,9 @@
 
               <li class="nav-item">
                   <div class="form-check nav-link" style="padding-left:50px">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
+                        <input id="sentiment-facets-chk-2" data-id="sentiment" data-value="Neutral" onchange="checkBoxChange(this)"
+                        class="form-check-input" type="checkbox">
+                        <label class="form-check-label" for="sentiment-facets-chk-2">
                           Neutral
                         </label>
                   </div>
@@ -253,8 +233,9 @@
 
                 <li class="nav-item">
                     <div class="form-check nav-link" style="padding-left:50px">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
-                          <label class="form-check-label" for="gridCheck1">
+                          <input id="topic-facets-chk-0" data-id="topic" data-value="Crime" onchange="checkBoxChange(this)"
+                          class="form-check-input" type="checkbox">
+                          <label class="form-check-label" for="topic-facets-chk-0">
                             Crime
                           </label>
                     </div>
@@ -262,8 +243,9 @@
 
                 <li class="nav-item">
                     <div class="form-check nav-link" style="padding-left:50px">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
-                          <label class="form-check-label" for="gridCheck1">
+                          <input id="topic-facets-chk-1" data-id="topic" data-value="Education" onchange="checkBoxChange(this)"
+                          class="form-check-input" type="checkbox">
+                          <label class="form-check-label" for="topic-facets-chk-1">
                             Education
                           </label>
                     </div>
@@ -271,8 +253,9 @@
 
                 <li class="nav-item">
                     <div class="form-check nav-link" style="padding-left:50px">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
-                          <label class="form-check-label" for="gridCheck1">
+                          <input id="topic-facets-chk-2" data-id="topic" data-value="Environment" onchange="checkBoxChange(this)"
+                          class="form-check-input" type="checkbox">
+                          <label class="form-check-label" for="topic-facets-chk-2">
                             Environment
                           </label>
                     </div>
@@ -280,8 +263,9 @@
 
                 <li class="nav-item">
                     <div class="form-check nav-link" style="padding-left:50px">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
-                          <label class="form-check-label" for="gridCheck1">
+                          <input id="topic-facets-chk-3" data-id="topic" data-value="Politics" onchange="checkBoxChange(this)"
+                          class="form-check-input" type="checkbox">
+                          <label class="form-check-label" for="topic-facets-chk-3">
                             Politics
                           </label>
                     </div>
@@ -289,8 +273,9 @@
 
                 <li class="nav-item">
                     <div class="form-check nav-link" style="padding-left:50px">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
-                          <label class="form-check-label" for="gridCheck1">
+                          <input id="topic-facets-chk-4" data-id="topic" data-value="General" onchange="checkBoxChange(this)"
+                          class="form-check-input" type="checkbox">
+                          <label class="form-check-label" for="topic-facets-chk-4">
                             General
                           </label>
                     </div>

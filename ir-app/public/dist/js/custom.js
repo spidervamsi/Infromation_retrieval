@@ -24,7 +24,7 @@ $("#search-tweets-button").click(function(){
 
 $("#search-news-button").click(function(){
   var query = $("#news-query").val();
-
+  
   if(query == "") {
     $("#news-table").hide();
     alert("Empty query!");
@@ -36,8 +36,41 @@ $("#search-news-button").click(function(){
 });
 
 function generateFacetFilters() {
+  var el = document.querySelector('#poi-facets');
+  pois.forEach((element, index) => {
+    var li = '<li class="nav-item"> \
+      <div class="form-check nav-link" style="padding-left:50px"> \
+          <input id="poi-facets-chk-'+index+'" data-id="poi_name" data-value="'+element+'" onchange="checkBoxChange(this)"\
+          class="form-check-input" type="checkbox" id="gridCheck'+index+'"> \
+          <label class="form-check-label" for="poi-facets-chk-'+index+'"> \
+            '+element+' \
+          </label> \
+      </div> \
+    </li>';
+    var div = document.createElement('div');
+    div.innerHTML = li.trim();
+    el.appendChild(div.firstChild);
+  }) 
+}
 
-  
+var filters = {
+  poi_name: [],
+  country: [],
+  lang: [],
+  sentiment: [],
+  topic: []
+}
+
+function checkBoxChange(element){
+  var id = element.getAttribute('data-id');
+  var val = element.getAttribute('data-value');
+  if(element.checked){
+    filters[id].push(val);
+  }
+  else{
+    filters[id].splice(filters[id].indexOf(val), 1);
+  }
+  console.log(filters);
 }
 
 function populateTweetTable() {
@@ -105,24 +138,55 @@ function viewNewsArticles() {
     $("#facets").hide();
 }
 
-function constructQuery() {
-
+function constructQuery(search_query) {
+  //"&&poi:modi,obama&&country:India"
+  var queryString = "";
+  Object.keys(filters).forEach((key) => {
+    if(filters[key].length > 0){
+      queryString += " && "+key+":";
+      let length = filters[key].length;
+      filters[key].forEach((values, index) => {
+        if(index+1 < length)
+          queryString += values + ",";
+        else
+          queryString += values
+      })
+    }
+  });
+  return search_query + queryString;
 }
 
-function performTweetSearch() {
+function performTweetSearch(search_query) {
 
-  var query = constructQuery();
+  var query = constructQuery(search_query);
+  console.log(query);
 
-  var data = [{
-    user: 'BarackObama',
-    tweet: 'Hello',
-    language: 'English',
-    sentiment: 'Positive',
-    topic: 'General',
-    url: 'URL'
-  }];
+  $.post("/getTweets",
+  {
+    query: query
+  },
+  function(data, status){
 
-  $('#tweet-table').bootstrapTable('load', data);
+    var table_data = []
+    console.log(data, status);
+    var result_docs = data.response.docs;
+
+    result_docs.forEach((doc, index) => {
+      table_data.push({
+        user: doc["poi_name"],
+        tweet: doc["tweet_text"],
+        language: doc["lang"],
+        sentiment: doc["sentiment"],
+        topic: doc["topic"],
+        url: "<a href='https://twitter.com/" + doc["poi_name"] + "/status/" + doc["id"] + "'>Tweet link</a>" 
+      });
+    });
+
+    $('#tweet-table').bootstrapTable('load', table_data);
+  });
+
+
+  
 
 }
 
