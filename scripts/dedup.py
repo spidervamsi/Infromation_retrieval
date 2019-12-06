@@ -1,6 +1,13 @@
 import json, os, re, random
 from pymongo import MongoClient
 
+# Connection to the MongoDB Server
+mongoClient = MongoClient('localhost:27017')
+db = mongoClient.ir
+collection = db.tweets
+
+tweets_set = set()
+
 def clean_tweets(text):
     return re.sub('@[^\s]+','',text)
 
@@ -17,14 +24,6 @@ def replace_color(file_name):
         f.write(result_string)
 
 
-# Connection to the MongoDB Server
-mongoClient = MongoClient('localhost:27017')
-db = mongoClient.ir
-collection = db.tweets
-
-tweets_set = set()
-
-
 def dedup_tweets():
 
     result = []
@@ -38,6 +37,8 @@ def dedup_tweets():
 
             tweets_set.add(tweet_id)
             del(document['_id'])
+            if 'extended_entities' in document:
+                del(document['extended_entities'])
             if 'text' in document:
                 document['tweet_text'] = document['text']
                 del(document['text'])
@@ -67,32 +68,36 @@ def dedup_tweets():
                     document['text_pt'] = ""
             document['clean_text'] = clean_tweets(document['tweet_text'])
             # result.append({ "index" : { "_index" : "tweets", "_id" : count } })
+            document["custom_id"] = count
             result.append(document)    
-
             count += 1
-            if count % 1000 == 0:
-                break
-    #             write_to_elastic(result)
-    #             result = []
+            
+            # if count % 1000 == 0:
+                # break
+                # write_to_elastic(result)
+                # result = []
 
-    write_to_elastic(result)
+    # write_to_elastic(result)
+    write_to_mongo(result)
     
+def write_to_mongo(result):
+    collection = db.result
+    collection.insert(result)
 
 def write_to_elastic(result):
     print(len(result))
-    with open("temp_sample.json", "w") as f:
+    with open("temp.json", "w") as f:
         for entry in result:
             json.dump(entry, f)
             f.write("\n")
 
-    replace_color("temp_sample.json")
+    replace_color("temp.json")
 
-    # os.system("curl -XPOST -H \"Content-Type: application/x-ndjson\" localhost:9200/_bulk --data-binary @temp.json")
+    os.system("curl -XPOST -H \"Content-Type: application/x-ndjson\" localhost:9200/_bulk --data-binary @temp.json")
 
 
 dedup_tweets()
 
-# print(len(result))
 
 # # Randomize inputs
 # random_result = []
@@ -108,6 +113,5 @@ dedup_tweets()
 # replace_color("data_random.json")
 
 
-# collection = db.dedup
-# collection.insert(result)
+
 
