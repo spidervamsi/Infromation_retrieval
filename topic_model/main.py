@@ -12,31 +12,36 @@ import json
 from tqdm import tqdm
 import topic_modelling
 import emoji
-
-
-processed = topic_modelling.ground_truth()
-
+from pymongo import MongoClient
 
 def remove_emoji(text):
     return emoji.get_emoji_regexp().sub(u'', text)
 
-
+# Connection to the MongoDB Server
+mongoClient = MongoClient('localhost:27017')
+db = mongoClient.ir
+collection = db.result
+processed = topic_modelling.ground_truth()
 translator = Translator()
 analyzer = SentimentIntensityAnalyzer()
 
-data_path = '/media/vignajeeth/All Files/Dataset/IR_Tweets/data_sample.json'  # Change this
+def get_processed_record(entry):
+    print("Current custom id:", entry["custom_id"])
+    entry['translated_sentence'] = entry["tweet_text"]
+    if entry["lang"] == "hi" or entry["lang"] == "pt":
+        entry['translated_sentence'] = translator.translate(remove_emoji(entry['tweet_text'])).text
 
+    entry['sentiment'] = analyzer.polarity_scores(entry['translated_sentence'])["compound"]
 
-with open(data_path) as json_file:
-    dataset = json.load(json_file)
+    entry['topic'] = topic_modelling.topic(entry['translated_sentence'], processed)
+    return entry
 
-result = []
-le = len(dataset)
-for i in tqdm(range(le)):
-    dataset[i]['translated_sentence'] = translator.translate(remove_emoji(dataset[i]['tweet_text'])).text
-    dataset[i]['sentiment'] = analyzer.polarity_scores(dataset[i]['translated_sentence'])
-    dataset[i]['topic'] = topic_modelling.topic(dataset[i]['translated_sentence'], processed)
-    result.append([dataset[i]['translated_sentence'], dataset[i]['sentiment'], dataset[i]['topic']])
+if __name__ == "__main__":
+    write_collection = db.processed
+    # cursor = collection.find({"custom_id": {"$gt": 9370}})
+    cursor = collection.find({"custom_id": {"$gt": 9370, "$lt": 10001}})
 
-with open("translated_sentiment_topic_data.json", "w") as write_file:
-    json.dump(dataset, write_file)
+    for document in cursor:
+        result = get_processed_record(document)
+        write_collection.insert(result)
+

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tweet Search</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+
+<div class="wrapper">
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">SVCube</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="viewAnalytics();">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Analytics
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="viewNewsArticles();">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+                News Articles
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="viewSearch();">
+              <i class="nav-icon fas fa-search"></i>
+              <p>
+                Search
+              </p>
+            </a>
+          </li>
+
+          <section id="facets">
+          <li class="nav-header">FILTERS</li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <p>
+                POI
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>KamalaHarris</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/compose.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>AOC</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Read</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <p>
+                Country
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>USA</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>India</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Brazil</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <p>
+                Language
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>English</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hindi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Portuguese</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <p>
+                Sentiment
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Positive</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Negative</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Neutral</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <p>
+                Topic
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Crime</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Education</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Environment</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Politics</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>General</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          </section>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Search Content Wrapper. Contains page content -->
+  <div class="content-wrapper" id="search-content">
+    <!-- Content Header (Page header) -->
+    <div class="content-header" >
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-lg-6 offset-lg-3">
+            <div class="input-group" style="margin-top:30px">
+              <input type="text" name="message" placeholder="Type Search Query ..." class="form-control">
+              <span class="input-group-append">
+                <button type="button" class="btn btn-primary" id="search-button">Search Tweets</button>
+              </span>
+            </div>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+
+    <div class="search-body">
+        <table id="tweet-table"></table>
+    </div>
+
+  </div>
+  <!-- /. Search content-wrapper -->
+
+  <div class="content-wrapper" id="kibana-content">
+    <iframe src="http://localhost:5601/app/kibana#/dashboard/f5ee7fa0-1595-11ea-b5d8-678b8a29b87e?embed=true&_g=(refreshInterval:(pause:!t,value:0),time:(from:now-1y,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:6,i:'7830cb51-36be-4e47-aac4-9f788674c8ee',w:12,x:0,y:0),id:'52f26310-1582-11ea-906b-7d829bc8443c',panelIndex:'7830cb51-36be-4e47-aac4-9f788674c8ee',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:6,i:'8a6a8057-27c6-4e94-bc7a-566cc9cb7e0a',w:12,x:12,y:0),id:'9a8482a0-1594-11ea-b5d8-678b8a29b87e',panelIndex:'8a6a8057-27c6-4e94-bc7a-566cc9cb7e0a',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:6,i:'4e09e8cb-eaff-49f5-b540-e60c0c31e39e',w:11,x:24,y:0),id:b07c9840-1594-11ea-b5d8-678b8a29b87e,panelIndex:'4e09e8cb-eaff-49f5-b540-e60c0c31e39e',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:6,i:'05c1e7a3-b8a1-44d7-b52c-709db9755f21',w:13,x:35,y:0),id:bb1eea50-1594-11ea-b5d8-678b8a29b87e,panelIndex:'05c1e7a3-b8a1-44d7-b52c-709db9755f21',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:15,i:'42bbc856-f7d3-4e17-b972-6f5b9121a70f',w:24,x:0,y:6),id:f6a92240-1583-11ea-906b-7d829bc8443c,panelIndex:'42bbc856-f7d3-4e17-b972-6f5b9121a70f',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:15,i:'57d25bdb-038e-4340-9338-be996fc2788e',w:24,x:24,y:6),id:ca3ac650-1583-11ea-906b-7d829bc8443c,panelIndex:'57d25bdb-038e-4340-9338-be996fc2788e',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:13,i:dcdc3cf1-3f10-4a41-b5e8-48ee93f1646f,w:24,x:0,y:21),id:cda49020-1581-11ea-906b-7d829bc8443c,panelIndex:dcdc3cf1-3f10-4a41-b5e8-48ee93f1646f,type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:13,i:'0bc45f99-f6b4-436a-8886-da1604d1561b',w:23,x:24,y:21),id:adb7cac0-15c7-11ea-b8d3-45f6ea390a37,panelIndex:'0bc45f99-f6b4-436a-8886-da1604d1561b',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:17,i:'98b4d3a8-ea67-4c15-9160-1a7e8d262aa3',w:48,x:0,y:34),id:'639fe650-1597-11ea-b5d8-678b8a29b87e',panelIndex:'98b4d3a8-ea67-4c15-9160-1a7e8d262aa3',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:15,i:'8cd73cae-73fb-4447-9d99-bafbb87701d0',w:48,x:0,y:51),id:f0ab81a0-159a-11ea-b5d8-678b8a29b87e,panelIndex:'8cd73cae-73fb-4447-9d99-bafbb87701d0',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:14,i:'59de4332-1475-4921-8671-094e72868267',w:48,x:0,y:66),id:'7de344c0-1598-11ea-b5d8-678b8a29b87e',panelIndex:'59de4332-1475-4921-8671-094e72868267',type:visualization,version:'7.4.2'),(embeddableConfig:(),gridData:(h:15,i:'0cd095cf-c316-4fdd-8b5f-7004a89e7a97',w:48,x:0,y:80),id:'9e6876c0-1598-11ea-b5d8-678b8a29b87e',panelIndex:'0cd095cf-c316-4fdd-8b5f-7004a89e7a97',type:visualization,version:'7.4.2')),query:(language:kuery,query:''),timeRestore:!f,title:'Tweet+Dashboard',viewMode:view)" 
+    height="1500" width="100%"></iframe>
+  </div>
+
+  <div class="content-wrapper" id="news-content">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-lg-6 offset-lg-3">
+              <div class="input-group" style="margin-top: 30px">
+                <input type="text" name="message" placeholder="Type Search Query ..." class="form-control">
+                <span class="input-group-append">
+                  <button type="button" class="btn btn-primary" id="search-button">Search News Articles</button>
+                </span>
+              </div>
+            </div>
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+  
+      <div class="search-body">
+          <table id="news-table"></table>
+      </div>
+  
+    </div>
+
+
+</div>
+<!-- ./wrapper -->
+
+
+
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+<!-- Latest compiled and minified Locales -->
+<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/custom.js"></script>
+<script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+</body>
+</html>
