@@ -172,11 +172,22 @@ function performTweetSearch(search_query) {
     var result_docs = data.response.docs;
 
     result_docs.forEach((doc, index) => {
+	let sent = "Neutral";
+      if(doc['sentiment']>0){
+sent = "Positive";
+	}
+else if(doc['sentiment'] < 0){
+sent = "Negative";
+}
+else
+sent = "Neutral";
+if(doc['topic'] == 'Neutral')
+doc['topic'] = "General";
       table_data.push({
         user: doc["poi_name"],
         tweet: doc["tweet_text"],
         language: doc["lang"],
-        sentiment: doc["sentiment"],
+        sentiment: sent,
         topic: doc["topic"],
         url: "<a href='https://twitter.com/" + doc["poi_name"] + "/status/" + doc["id"] + "'>Tweet link</a>" 
       });
@@ -190,12 +201,33 @@ function performTweetSearch(search_query) {
 
 }
 
-function performNewsSearch() {
+function performNewsSearch(query) {
 
   var data = [{
     news_title: 'US Celebrates Thanksgiving',
     news_link: 'www.google.com',
   }];
 
-  $('#news-table').bootstrapTable('load', data);
+
+$.post("/getNews",
+  {
+    query: query
+  },
+  function(data, status){
+
+    var table_data = []
+    console.log(data, status);
+    var result_docs = data.response.docs;
+
+    result_docs.forEach((doc, index) => {
+      
+	table_data.push({
+        news_title: doc["title"],
+        news_link: "<a href='" + doc["url"] +"'>News link</a>"
+      });
+    });
+
+    $('#news-table').bootstrapTable('load', table_data);
+  });
+
 }

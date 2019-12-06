@@ -14,8 +14,19 @@ router.get('/', function(req, res, next) {
 router.post('/getTweets', function(req, res, next) {
   
   console.log("ON DATA", req.body);
-  var full_query = server+'/solr/'+core+'/select?q=tweet_text%3A%20' + encodeURIComponent(req.body.query) + '&defType=edismax&qf=tweet_text&wt=json&indent=true&rows=20&start=0';
+  var full_query = server+'/solr/'+core+'/select?q=tweet_text%3A%20' + encodeURIComponent(req.body.query) + '&defType=edismax&qf=tweet_text&wt=json&indent=true&rows=1000&start=0';
   
+  results = checkData(full_query, function (data) {
+          res.send(data);
+  });
+
+});
+
+router.post('/getNews', function(req, res, next) {
+
+  console.log("ON DATA", req.body);
+  var full_query = server+'/solr/news/select?q=title%3A%20' + encodeURIComponent(req.body.query) + '&defType=edismax&qf=title&wt=json&indent=true&rows=20&start=0';
+
   results = checkData(full_query, function (data) {
           res.send(data);
   });
